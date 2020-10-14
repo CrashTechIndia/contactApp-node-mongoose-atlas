@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+require("dotenv").config();
 
 
 const app = express()
@@ -8,14 +9,21 @@ const pw = process.env.pw;
 const db = process.env.db;
 const port = process.env.PORT || 9000
 
-const url = `mongodb+srv://${user}:${pw}@clustertrial.azpqw.mongodb.net/${db}?retryWrites=true&w=majority`;
+const url = process.env.uri;
 
-mongoose.connect(url, {useNewUrlParser:true})
+
+mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology:true})
+
 const con = mongoose.connection
 
-con.on('open', () => {
-    console.log('connected...')
-})
+// con.on('open', () => {
+//     console.log('connected...')
+// })
+con.once('open', function(){
+    console.log('Conection has been made!');
+  }).on('error', function(error){
+      console.log('Error is: ', error);
+  });
 
 app.use(express.json())
 
