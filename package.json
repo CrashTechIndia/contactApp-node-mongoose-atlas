@@ -1,0 +1,28 @@
+{
+  "name": "contactapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "afsar@CrashTech",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "engines": {
+    "node": "^12.16.3"
+  },
+  "keywords": [
+    "conntactApp",
+    "Contact App",
+    "CrashTech",
+    "Afsar"
+  ]
+}
