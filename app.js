@@ -1,9 +1,13 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
-const url = 'mongodb+srv://testUser:testUser@clustertrial.azpqw.mongodb.net/sample_airbnb?retryWrites=true&w=majority'
 
 const app = express()
+const user = process.env.user;
+const pw = process.env.pw;
+const db = process.env.db;
+const url = `mongodb+srv://${user}:${pw}@clustertrial.azpqw.mongodb.net/${db}?retryWrites=true&w=majority`;
+const port = process.env.PORT || 9000
 
 mongoose.connect(url, {useNewUrlParser:true})
 const con = mongoose.connection
@@ -17,6 +21,6 @@ app.use(express.json())
 const contactRouter = require('./routes/contacts')
 app.use('/contacts',contactRouter)
 
-app.listen(9000, () => {
+app.listen(port, () => {
     console.log('Server started')
 })
